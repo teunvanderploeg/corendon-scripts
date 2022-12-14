@@ -6,7 +6,7 @@ sudo a2enmod wsgi
 sudo ln -sf /usr/bin/python3 /usr/bin/python
 
 # Get git corendon-captive-portal repository and move to correct directory
-git clone https://github.com/teunvanderploeg/corendon-captive-portal.git /var/www/html/corendon-captive-portal
+sudo git clone https://github.com/teunvanderploeg/corendon-captive-portal.git /var/www/html/corendon-captive-portal
 
 # Create virtual environment
 sudo virtualenv /var/www/html/corendon-captive-portal
@@ -32,7 +32,7 @@ EOF
 
 # disabling default apache2 site and enabling flask site
 sudo a2dissite 000-default
-sudo a2ensite flask
+sudo a2ensite captive-portal
 
 # WSGI config file
 sudo cat >> /var/www/html/app.wsgi << EOF
