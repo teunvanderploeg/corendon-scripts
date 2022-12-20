@@ -18,6 +18,18 @@ sudo service dhcpcd restart
 sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.orig
 sudo cp dnsmasq.txt /etc/dnsmasq.conf
 
+# To use the 53 port, disable & stop the systemd-resolved service
+sudo systemctl disable systemd-resolved.service
+
+systemctl stop systemd-resolved
+
+# Start the dnsmasq service
+sudo service start
+
+sudo systemctl enable dnsmasq
+
+sudo systemctl start dnsmasq
+
 # Start dnsmasq (it was stopped), it will now use the updated configuration
 sudo systemctl start dnsmasq
 
