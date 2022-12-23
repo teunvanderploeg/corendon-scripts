@@ -32,8 +32,5 @@ iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT  --to-destinati
 iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 443 -j DNAT --to-destination  192.168.137.121:443
 
 
-iptables -t nat -A POSTROUTING -j MASQUERADE
-
-
 # Save the netfilter
 sudo netfilter-persistent save
