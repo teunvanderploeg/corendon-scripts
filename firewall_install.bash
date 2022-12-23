@@ -25,11 +25,11 @@ iptables -t nat -I PREROUTING -i wlan0 -m set --match-set whitelisted src -j ACC
 
 
 # Add a line to the PREROUTING chain, in the nat table. With incoming interface wlan0, when the protocol is tcp and destination port is 80, forward it to 192.168.X.X;80
-iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT  --to-destination  192.168.X.X:80
+iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 80 -j DNAT  --to-destination  192.168.137.121:80
 
 
 # Add a line to the PREROUTING chain, in the nat table. With incoming interface wlan0, when the protocol is tcp and destination port is 443, forward it to 192.168.X.X:443
-iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 443 -j DNAT --to-destination  192.168.X.X:443
+iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 443 -j DNAT --to-destination  192.168.137.121:443
 
 
 iptables -t nat -A POSTROUTING -j MASQUERADE
