@@ -9,27 +9,27 @@ sudo ln -sf /usr/bin/python3 /usr/bin/python
 sudo systemctl start mysql.service
 
 # Get git corendon-captive-portal repository and move to correct directory
-sudo git clone https://github.com/teunvanderploeg/corendon-captive-portal.git /var/www/html/corendon-captive-portal
+sudo git clone https://github.com/teunvanderploeg/corendon-captive-portal.git /var/www/html/captive-portal-corendon/corendon-captive-portal
 
 # Create virtual environment
-sudo virtualenv /var/www/html/corendon-captive-portal venv
+sudo virtualenv /var/www/html/captive-portal-corendon/corendon-captive-portal venv
 # Activate virtual environment
-sudo ./var/www/html/corendon-captive-portal/venv/bin/activate
+sudo ./var/www/html/captive-portal-corendon/corendon-captive-portal/venv/bin/activate
 # Installing flask module in venv
-sudo /var/www/html/corendon-captive-portal/venv/bin/pip3 install -r /var/www/html/corendon-captive-portal/requirements.txt
+sudo /var/www/html/captive-portal-corendon/corendon-captive-portal/venv/bin/pip3 install -r /var/www/html/captive-portal-corendon/corendon-captive-portal/requirements.txt
 
 # Apache2 config for wsgi and flask site
 sudo cat >> /etc/apache2/sites-available/captive-portal.conf << EOF
 <VirtualHost *:80>
-  ServerName yourdomain.com
+  ServerName corendon.com
   ServerAdmin youemail@email.com
-  WSGIScriptAlias / /var/www/html/app.wsgi
-  <Directory /var/www/html/corendon-captive-portal/>
+  WSGIScriptAlias / /var/www/html/captive-portal-corendon/app.wsgi
+  <Directory /var/www/html/captive-portal-corendon/corendon-captive-portal/>
     WSGIProcessGroup captive-portal-deamon
     WSGIApplicationGroup &{GLOBAL}
     Require all granted
   </Directory>
-  WSGIDaemonProcess captive-portal-deamon user=odroid group=www-data threads=5
+  WSGIDaemonProcess captive-portal-deamon user=www-data group=www-data threads=5
 </VirtualHost>
 EOF
 
@@ -38,12 +38,13 @@ sudo a2dissite 000-default
 sudo a2ensite captive-portal
 
 # WSGI config file
-sudo cat >> /var/www/html/app.wsgi << EOF
+sudo cat >> /var/www/html/captive-portal-corendon << EOF
 #!/usr/bin/python
 import sys
+sys.path.insert(0,"/var/www/html/captive-portal-corendon/corendon-captive-portal")
 
-sys.path.insert(0,"/var/www/html/captive-portal")
-from app import app as application
+from __init__ import create_app
+application = create_app()
 EOF
 
 # Setup database
