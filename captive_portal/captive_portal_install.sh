@@ -48,7 +48,7 @@ application = create_app()
 EOF
 
 # Setup database
-sudo mysql < /var/www/html/corendon-captive-portal/database_setup.sql
+sudo mysql < /var/www/html/captive-portal-corendon/corendon-captive-portal/database_setup.sql
 
 # Reload apache2 to load the right config
 sudo systemctl reload apache2
