@@ -38,7 +38,7 @@ sudo a2dissite 000-default
 sudo a2ensite captive-portal
 
 # WSGI config file
-sudo cat >> /var/www/html/captive-portal-corendon << EOF
+sudo cat >> /var/www/html/captive-portal-corendon/app.wsgi << EOF
 #!/usr/bin/python
 import sys
 sys.path.insert(0,"/var/www/html/captive-portal-corendon/corendon-captive-portal")
