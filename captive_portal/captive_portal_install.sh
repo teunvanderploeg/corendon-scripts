@@ -14,9 +14,9 @@ sudo git clone https://github.com/teunvanderploeg/corendon-captive-portal.git /v
 # Create virtual environment
 sudo virtualenv /var/www/html/captive-portal-corendon/corendon-captive-portal venv
 # Activate virtual environment
-sudo ./var/www/html/captive-portal-corendon/corendon-captive-portal/venv/bin/activate
+sudo . /var/www/html/captive-portal-corendon/corendon-captive-portal/venv/bin/activate
 # Installing flask module in venv
-sudo /var/www/html/captive-portal-corendon/corendon-captive-portal/venv/bin/pip3 install -r /var/www/html/captive-portal-corendon/corendon-captive-portal/requirements.txt
+/var/www/html/captive-portal-corendon/corendon-captive-portal/venv/bin/pip3 install -r /var/www/html/captive-portal-corendon/corendon-captive-portal/requirements.txt
 
 # Apache2 config for wsgi and flask site
 sudo cat > /etc/apache2/sites-available/captive-portal.conf << EOF
