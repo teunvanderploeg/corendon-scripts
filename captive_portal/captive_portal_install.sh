@@ -19,7 +19,7 @@ sudo ./var/www/html/captive-portal-corendon/corendon-captive-portal/venv/bin/act
 sudo /var/www/html/captive-portal-corendon/corendon-captive-portal/venv/bin/pip3 install -r /var/www/html/captive-portal-corendon/corendon-captive-portal/requirements.txt
 
 # Apache2 config for wsgi and flask site
-sudo cat >> /etc/apache2/sites-available/captive-portal.conf << EOF
+sudo cat > /etc/apache2/sites-available/captive-portal.conf < EOF
 <VirtualHost *:80>
   ServerName corendon.com
   ServerAdmin youemail@email.com
@@ -38,7 +38,7 @@ sudo a2dissite 000-default
 sudo a2ensite captive-portal
 
 # WSGI config file
-sudo cat >> /var/www/html/captive-portal-corendon/app.wsgi << EOF
+sudo cat > /var/www/html/captive-portal-corendon/app.wsgi < EOF
 #!/usr/bin/python
 import sys
 sys.path.insert(0,"/var/www/html/captive-portal-corendon/corendon-captive-portal")
