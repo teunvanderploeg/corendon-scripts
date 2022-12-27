@@ -1,6 +1,6 @@
 #! /usr/bin/bash
 # install hostapd and dnsmasq to be able to make an access point
-sudo apt install dnsmasq hostapd rfkill -y
+sudo apt install dnsmasq hostapd rfkill dhcpcd5 -y
 
 # config files are not ready yet, so turn software off
 sudo systemctl stop dnsmasq
