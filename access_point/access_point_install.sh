@@ -9,7 +9,7 @@ sudo systemctl stop hostapd
 # to configure the static ip address, edit the dhcpcd config file
 sudo cp dhcpcd.txt /etc/dhcpcd.conf
 
-# Now restart the dhcpcd daemon and set up the new wlan0 configuration
+# Now restart the dhcpcd daemon and set up the new wlan0 configuration.
 sudo service dhcpcd restart
 
 # The DHCP service is provided by dnsmasq. By default, the configuration file contains a lot of information that is
