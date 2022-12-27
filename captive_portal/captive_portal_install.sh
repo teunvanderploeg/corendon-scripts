@@ -12,7 +12,7 @@ sudo systemctl start mysql.service
 sudo git clone https://github.com/teunvanderploeg/corendon-captive-portal.git /var/www/html/captive-portal-corendon/corendon-captive-portal
 
 # Create virtual environment
-sudo virtualenv /var/www/html/captive-portal-corendon/corendon-captive-portal venv
+sudo virtualenv /var/www/html/captive-portal-corendon/corendon-captive-portal/venv
 # Activate virtual environment
 sudo . /var/www/html/captive-portal-corendon/corendon-captive-portal/venv/bin/activate
 # Installing flask module in venv
