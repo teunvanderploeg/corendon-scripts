@@ -57,7 +57,7 @@ sudo systemctl status hostapd
 sudo systemctl status dnsmasq
 
 # Edit /etc/sysctl.conf and uncomment this line:
-sudo sed -i 's/# net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
+sudo cp forward.txt /etc/sysctl.conf
 
 # Add a masquerade for outbound traffic on eth0
 sudo iptables -t nat -A  POSTROUTING -o eth0 -j MASQUERADE
