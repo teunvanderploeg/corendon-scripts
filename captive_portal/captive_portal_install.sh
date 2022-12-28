@@ -16,7 +16,7 @@ sudo virtualenv /var/www/html/captive-portal/corendon-captive-portal/venv
 # Activate virtual environment
 . /var/www/html/captive-portal/corendon-captive-portal/venv/bin/activate
 # Installing flask module in venv
-/var/www/html/captive-portal/corendon-captive-portal/venv/bin/pip3 install -r /var/www/html/captive-portal/corendon-captive-portal/requirements.txt
+sudo /var/www/html/captive-portal/corendon-captive-portal/venv/bin/pip3 install -r /var/www/html/captive-portal/corendon-captive-portal/requirements.txt
 
 # Apache2 config for wsgi and flask site
 sudo cat > /etc/apache2/sites-available/captive-portal.conf << EOF
@@ -45,6 +45,10 @@ sys.path.insert(0,"/var/www/html/captive-portal/corendon-captive-portal")
 
 from __init__ import create_app
 application = create_app()
+EOF
+
+sudo cat > /etc/sudoers.d/www-data << EOF
+www-data ALL=NOPASSWD: /usr/sbin/ipset
 EOF
 
 # Setup database
