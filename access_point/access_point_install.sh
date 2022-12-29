@@ -69,7 +69,6 @@ sudo cat > /etc/default/hostapd << EOF
 DAEMON_CONF="/etc/hostapd/hostapd.conf"
 EOF
 
-
 # Now enable and start hostapd
 sudo systemctl unmask hostapd
 sudo systemctl enable hostapd
@@ -82,10 +81,6 @@ sudo rfkill unblock all
 
 # start hostapd service
 sudo systemctl start hostapd
-
-# Do a quick check of their status to ensure they are active and running
-sudo systemctl status hostapd
-sudo systemctl status dnsmasq
 
 # Backup sysctl.conf
 sudo mv /etc/sysctl.conf /etc/sysctl.conf.back
