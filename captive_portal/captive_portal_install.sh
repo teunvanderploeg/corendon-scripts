@@ -23,6 +23,7 @@ sudo cat > /etc/apache2/sites-available/captive-portal.conf << EOF
 <VirtualHost *:80>
   ServerName corendon.com
   ServerAdmin youemail@email.com
+  RedirectMatch 302 /generate_204 /login
   WSGIScriptAlias / /var/www/html/captive-portal/app.wsgi
   <Directory /var/www/html/captive-portal/corendon-captive-portal/>
     WSGIProcessGroup captive-portal-deamon
