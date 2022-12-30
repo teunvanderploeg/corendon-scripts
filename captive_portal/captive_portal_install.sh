@@ -60,7 +60,7 @@ sudo mysql < /var/www/html/captive-portal/corendon-captive-portal/database_setup
 sudo npm install --prefix /var/www/html/captive-portal/corendon-captive-portal
 
 # Setup tailwindcss
-sudo npx tailwindcss -i /var/www/html/captive-portal/corendon-captive-portal/static/src/input.css -o /var/www/html/captive-portal/corendon-captive-portal/static/dist/css/output.css
+npx tailwindcss -i /var/www/html/captive-portal/corendon-captive-portal/static/src/input.css -o /var/www/html/captive-portal/corendon-captive-portal/static/dist/css/output.css
 
 # Reload apache2 to load the right config
 sudo systemctl reload apache2
