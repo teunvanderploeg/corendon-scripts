@@ -56,6 +56,8 @@ EOF
 # Setup database
 sudo mysql < /var/www/html/captive-portal/corendon-captive-portal/database_setup.sql
 
+npm fund
+
 # Install the npm pakages
 sudo npm install --prefix /var/www/html/captive-portal/corendon-captive-portal
 
