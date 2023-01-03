@@ -14,7 +14,7 @@ sudo git clone https://github.com/teunvanderploeg/corendon-captive-portal.git /v
 # Create virtual environment
 sudo virtualenv /var/www/html/captive-portal/corendon-captive-portal/venv
 # Activate virtual environment
-sudo ./var/www/html/captive-portal/corendon-captive-portal/venv/bin/activate
+. /var/www/html/captive-portal/corendon-captive-portal/venv/bin/activate
 # Installing flask module in venv
 sudo /var/www/html/captive-portal/corendon-captive-portal/venv/bin/pip3 install -r /var/www/html/captive-portal/corendon-captive-portal/requirements.txt
 
@@ -23,8 +23,9 @@ sudo cat > /etc/apache2/sites-available/captive-portal.conf << EOF
 <VirtualHost *:80>
   ServerName corendon.com
   ServerAdmin youemail@email.com
-  RedirectMatch 302 /generate_204 /login
-  RedirectMatch 302 /hotspot-detect.html /login
+  RedirectMatch 302 /generate_204 /
+  RedirectMatch 302 /connecttest.txt /
+  RedirectMatch 302 /hotspot-detect.html /
   WSGIScriptAlias / /var/www/html/captive-portal/app.wsgi
   <Directory /var/www/html/captive-portal/corendon-captive-portal/>
     WSGIProcessGroup captive-portal-deamon
@@ -60,7 +61,7 @@ sudo mysql < /var/www/html/captive-portal/corendon-captive-portal/database_setup
 sudo npm install --prefix /var/www/html/captive-portal/corendon-captive-portal
 
 # Setup tailwindcss
-sudo npx tailwindcss -i /var/www/html/captive-portal/corendon-captive-portal/static/src/input.css -o /var/www/html/captive-portal/corendon-captive-portal/static/dist/css/output.css
+npx tailwindcss -i /var/www/html/captive-portal/corendon-captive-portal/static/src/input.css -o /var/www/html/captive-portal/corendon-captive-portal/static/dist/css/output.css
 
 # Reload apache2 to load the right config
 sudo systemctl reload apache2
