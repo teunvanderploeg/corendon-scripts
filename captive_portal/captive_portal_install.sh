@@ -18,7 +18,7 @@ sudo virtualenv /var/www/html/captive-portal/corendon-captive-portal/venv
 # Installing flask module in venv
 sudo pip3 install -r /var/www/html/captive-portal/corendon-captive-portal/requirements.txt
 
-sudo a2dismod ssl
+sudo a2enmod ssl
 sudo openssl req -new -newkey rsa:4096 -nodes -keyout /etc/ssl/private/corendon_captive_portal.key -out /etc/ssl/certs/corendon_captive_portal.csr -subj "/C=NL/ST=Noord-Holland/L=Amsterdam/O=HVA/CN=198.168.3.2"
 sudo openssl x509 -req -days 365 -in /etc/ssl/certs/corendon_captive_portal.csr -signkey /etc/ssl/private/corendon_captive_portal.key -out /etc/ssl/certs/corendon_captive_portal.crt
 
