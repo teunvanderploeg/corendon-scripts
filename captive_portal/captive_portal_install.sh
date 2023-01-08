@@ -26,7 +26,7 @@ sudo openssl x509 -req -days 365 -in /etc/ssl/certs/corendon_captive_portal.csr 
 sudo cat > /etc/apache2/sites-available/captive-portal.conf << EOF
 <VirtualHost *:80>
   ServerName www.CaptivePortal.com
-  Redirect permanent / https://192.168.3.2/
+  Redirect permanent / https://www.CaptivePortal.com/
 </VirtualHost>
 <VirtualHost *:443>
   SSLEngine on
