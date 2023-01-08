@@ -1,5 +1,5 @@
 # Install apache2, wsgi, pip3 mysql-server, nodejs, npm, and git
-sudo apt-get install apache2 libapache2-mod-wsgi-py3 python3-pip git mysql-server python3-virtualenv libmysqlclient-dev nodejs npm -y
+sudo apt-get install apache2 libapache2-mod-wsgi-py3 python3-pip git mysql-server python3-virtualenv libmysqlclient-dev nodejs npm openssl -y
 # enable apache2 module wsgi
 sudo a2enmod wsgi
 # Set Python3 as default Python
@@ -18,13 +18,22 @@ sudo virtualenv /var/www/html/captive-portal/corendon-captive-portal/venv
 # Installing flask module in venv
 sudo pip3 install -r /var/www/html/captive-portal/corendon-captive-portal/requirements.txt
 
+sudo a2dismod ssl
+sudo openssl req -new -newkey rsa:4096 -nodes -keyout /etc/ssl/private/corendon_captive_portal.key -out /etc/ssl/certs/corendon_captive_portal.csr -subj "/C=NL/ST=Noord-Holland/L=Amsterdam/O=HVA/CN=198.168.3.2"
+sudo openssl x509 -req -days 365 -in /etc/ssl/certs/corendon_captive_portal.csr -signkey /etc/ssl/private/corendon_captive_portal.key -out /etc/ssl/certs/corendon_captive_portal.crt
+
 # Apache2 config for wsgi and flask site
 sudo cat > /etc/apache2/sites-available/captive-portal.conf << EOF
 <VirtualHost *:80>
-  ServerName corendon.com
+  ServerName www.CaptivePortal.com
+  Redirect permanent / https://192.168.3.2/
+</VirtualHost>
+<VirtualHost *:443>
+  SSLEngine on
+  SSLCertificateFile /etc/ssl/certs/corendon_captive_portal.crt
+  SSLCertificationKeyFile /etc/ssl/private/corendon_captive_portal.key
+  ServerName www.CaptivePortal.com
   ServerAdmin youemail@email.com
-  RedirectMatch 302 /generate_204 /
-  RedirectMatch 302 /connecttest.txt /
   WSGIScriptAlias / /var/www/html/captive-portal/app.wsgi
   <Directory /var/www/html/captive-portal/corendon-captive-portal/>
     WSGIProcessGroup captive-portal-deamon
