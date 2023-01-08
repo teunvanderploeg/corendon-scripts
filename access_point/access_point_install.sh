@@ -34,8 +34,6 @@ sudo systemctl disable systemd-resolved.service
 systemctl stop systemd-resolved
 
 # Start the dnsmasq service
-sudo service start
-
 sudo systemctl enable dnsmasq
 
 sudo systemctl start dnsmasq
