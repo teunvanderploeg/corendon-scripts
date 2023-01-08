@@ -29,5 +29,8 @@ sudo iptables -t nat -A PREROUTING -i wlan0 -p tcp --dport 443 -j DNAT --to-dest
 # Block a porn site so the users cant watch porn on the airplane
 sudo iptables -I FORWARD -s 66.254.114.41 -j DROP
 
+# Masqerade all traffic
+sudo iptables -t nat -A  POSTROUTING -o eth0 -j MASQUERADE
+
 # Save the netfilter
 sudo netfilter-persistent save
