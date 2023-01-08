@@ -21,7 +21,7 @@ sudo pip3 install -r /var/www/html/captive-portal/corendon-captive-portal/requir
 # Apache2 config for wsgi and flask site
 sudo cat > /etc/apache2/sites-available/captive-portal.conf << EOF
 <VirtualHost *:80>
-  ServerName corendon.com
+  ServerName www.CaptivePortal.com
   ServerAdmin youemail@email.com
   RedirectMatch 302 /generate_204 /
   RedirectMatch 302 /connecttest.txt /
