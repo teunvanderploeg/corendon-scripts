@@ -31,7 +31,7 @@ sudo cat > /etc/apache2/sites-available/captive-portal.conf << EOF
 <VirtualHost *:443>
   SSLEngine on
   SSLCertificateFile /etc/ssl/certs/corendon_captive_portal.crt
-  SSLCertificationKeyFile /etc/ssl/private/corendon_captive_portal.key
+  SSLCertificateKeyFile /etc/ssl/private/corendon_captive_portal.key
   ServerName www.CaptivePortal.com
   ServerAdmin youemail@email.com
   RedirectMatch 302 /generate_204 /
