@@ -37,6 +37,7 @@ sudo cat > /etc/apache2/sites-available/captive-portal.conf << EOF
   RedirectMatch 302 /generate_204 /
   RedirectMatch 302 /connecttest.txt /
   RedirectMatch 302 /hotspot-detect.html /
+  RedirectMatch 302 /canonical.html /
   WSGIScriptAlias / /var/www/html/captive-portal/app.wsgi
   <Directory /var/www/html/captive-portal/corendon-captive-portal/>
     WSGIProcessGroup captive-portal-deamon
