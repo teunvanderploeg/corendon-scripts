@@ -2,6 +2,13 @@
 sudo apt install ipset iptables netfilter-persistent ipset-persistent iptables-persistent -y
 
 
+# Clean firewall
+sudo iptables -F
+sudo iptables -X
+sudo iptables -t nat -F
+sudo iptables -t nat -X
+
+
 # Create the inset whitelisted
 sudo ipset create whitelisted hash:ip
 
