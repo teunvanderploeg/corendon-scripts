@@ -2,7 +2,7 @@
 sudo apt install ipset iptables netfilter-persistent ipset-persistent iptables-persistent -y
 
 
-# Clean de firewall regels
+# Clean the firewall rules
 sudo iptables -F
 sudo iptables -X
 sudo iptables -t nat -F
