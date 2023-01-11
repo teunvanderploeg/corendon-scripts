@@ -5,7 +5,7 @@ sudo a2enmod wsgi
 # Set Python3 as default Python
 sudo ln -sf /usr/bin/python3 /usr/bin/python
 
-# Start mysql server
+# Start mysql server.
 sudo systemctl start mysql.service
 
 # Get git corendon-captive-portal repository and move to correct directory
