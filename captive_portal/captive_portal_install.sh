@@ -5,7 +5,7 @@ sudo a2enmod wsgi
 # Set Python3 as default Python
 sudo ln -sf /usr/bin/python3 /usr/bin/python
 
-# Start mysql server
+# Start mysql server.
 sudo systemctl start mysql.service
 
 # Get git corendon-captive-portal repository and move to correct directory
@@ -19,7 +19,7 @@ sudo virtualenv /var/www/html/captive-portal/corendon-captive-portal/venv
 sudo pip3 install -r /var/www/html/captive-portal/corendon-captive-portal/requirements.txt
 
 sudo a2enmod ssl
-sudo openssl req -new -newkey rsa:4096 -nodes -keyout /etc/ssl/private/corendon_captive_portal.key -out /etc/ssl/certs/corendon_captive_portal.csr -subj "/C=NL/ST=Noord-Holland/L=Amsterdam/O=HVA"
+sudo openssl req -new -newkey rsa:4096 -nodes -keyout /etc/ssl/private/corendon_captive_portal.key -out /etc/ssl/certs/corendon_captive_portal.csr -subj "/C=NL/ST=Noord-Holland/L=Amsterdam/O=HVA/CN=198.168.3.2"
 sudo openssl x509 -req -days 365 -in /etc/ssl/certs/corendon_captive_portal.csr -signkey /etc/ssl/private/corendon_captive_portal.key -out /etc/ssl/certs/corendon_captive_portal.crt
 
 # Apache2 config for wsgi and flask site
@@ -37,6 +37,7 @@ sudo cat > /etc/apache2/sites-available/captive-portal.conf << EOF
   RedirectMatch 302 /generate_204 /
   RedirectMatch 302 /connecttest.txt /
   RedirectMatch 302 /hotspot-detect.html /
+  RedirectMatch 302 /canonical.html /
   WSGIScriptAlias / /var/www/html/captive-portal/app.wsgi
   <Directory /var/www/html/captive-portal/corendon-captive-portal/>
     WSGIProcessGroup captive-portal-deamon

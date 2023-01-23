@@ -1,5 +1,12 @@
-# Install packages
+# Install packages 
 sudo apt install ipset iptables netfilter-persistent ipset-persistent iptables-persistent -y
+
+
+# Clean the firewall rules
+sudo iptables -F
+sudo iptables -X
+sudo iptables -t nat -F
+sudo iptables -t nat -X
 
 
 # Create the inset whitelisted
@@ -12,7 +19,7 @@ sudo systemctl start netfilter-persistent
 
 
 # Filter the table and add a line to FORWARD chain, dropping everything that doesn't match the whitelisted
-sudo iptables -t filter -A FORWARD -i wlan0 -m set ! --match-set whitelisted src -j DROP
+sudo iptables -t filter -A FORWARD -i wlan0 -m set ! --match-set whitelisted src -j REJECT
 
 
 # Filter the table and add a line to FORWARD chain, in the nat table, accepting everything that matches the whitelisted
