@@ -1,4 +1,4 @@
-# Install apache2, wsgi, pip3 mysql-server, nodejs, npm, and git
+# Install apache2, libapache2-mod-wsgi-py3, python3-pip, git, mysql-server, python3-virtualenv, libmysqlclient-dev, nodejs, npm and openssl
 sudo apt-get install apache2 libapache2-mod-wsgi-py3 python3-pip git mysql-server python3-virtualenv libmysqlclient-dev nodejs npm openssl -y
 # enable apache2 module wsgi
 sudo a2enmod wsgi
@@ -33,7 +33,7 @@ sudo cat > /etc/apache2/sites-available/captive-portal.conf << EOF
   SSLCertificateFile /etc/ssl/certs/corendon_captive_portal.crt
   SSLCertificateKeyFile /etc/ssl/private/corendon_captive_portal.key
   ServerName www.CaptivePortal.com
-  ServerAdmin youemail@email.com
+  ServerAdmin corendoncaptiveportal@test.com
   RedirectMatch 302 /generate_204 /
   RedirectMatch 302 /connecttest.txt /
   RedirectMatch 302 /hotspot-detect.html /
